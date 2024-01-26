@@ -1,0 +1,1 @@
+randomTools[rand() % randomTools.size()]

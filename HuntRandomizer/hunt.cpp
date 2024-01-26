@@ -38,11 +38,10 @@ public:
         "Tool Box"
     };
     vector <string> randomTools = {
-        "Spyglass","Electric Lamp","Alert trip Mine","Blank Fire Decoys","Derringer","Flare Pistol"
+        "Spyglass","Electric Lamp","Alert trip Mine","Blank Fire Decoys","Derringer","Choke Bomb","Decoy Fuses","Fusees",
+        "Poison Trip Mine","Decoys"
     };
-    vector <string> randomTools2 = {"Choke Bomb","Decoy Fuses","Fusees",
-        "Poison Trip Mine","Decoys"};
-    vector <string> randomTools3 = {"Concertina Trip Mine","Quad Derringer Pennyshot","Flare Pistol"};
+    vector <string> randomTools2 = {"Concertina Trip Mine","Quad Derringer Pennyshot","Flare Pistol"};
     vector<string> big = {
         "Nitro Express Rifle",
         "Crossbow",
@@ -176,6 +175,12 @@ public:
     Hunter(){
         cout << "You must input name and perk info!";
     }
+    ~Hunter(){
+        sex();
+    }
+    void sex(){
+        cout << "sex";
+    }
     int GetLoadout(){
         if(hunter > 0){
             cout << "/n" <<"Would You Get Your standart LoadOut? Y - yes, N - no.";
@@ -198,20 +203,20 @@ public:
         return 1;
     }
 private:
-    bool isHaveIntendant;
+    bool isHaveIntendant = false;
     int hunter = 0;
     int boxes = 5;
     int max = 3;
     int maxWeaponCarryable = 2;
     void consTools(){
         cout <<endl<< "Tools 1 = " << meleeTools[rand() % meleeTools.size()] << endl;
-        cout << "Tools 2 = " << randomTools[rand() % randomTools.size()]<< endl;
-        cout << "Tools 3 = " << randomTools2[rand() % randomTools2.size()]<< endl;
-        cout << "Tools 4 = " << randomTools3[rand() % randomTools3.size()]<< endl;
+        cout << "Tools 2 = " << "First aid Kit" << endl;
+        cout << "Tools 3 = " << randomTools[rand() % randomTools2.size()]<< endl;
+        cout << "Tools 4 = " << randomTools2[rand() % randomTools2.size()]<< endl;
         cout << "Consumable 1 = " << consumables[rand() % consumables.size()] << endl;
         cout << "Consumable 2 = " << consumables[rand() % consumables.size()] << endl;
         cout << "Consumable 3 = " << consumables[rand() % consumables.size()] << endl;
-        cout << "Consumable 4 = " << consumables[rand() % consumables.size()] << endl;
+        cout << "Consumable 4 = " << consumables[rand() % consumables.size()];
     }
     void BasedLoadouts11(){
          int temp = rand() % 3;
@@ -280,15 +285,15 @@ private:
         return 0;
     }
 };
-int main(){
-    srand(time(NULL));
+void HuntRandomizerStart(){
     cout << "************HUNT SHOWDOWN LOADOUT RANDOMIZER!!!**********";
     string name;
     cout << endl << "WHAT'S YOUR NAME HUNTER?";
+    cout << endl << "My name is ";
     cin >> name;
     bool intendant = false;
     char ans;
-    cout << "************HELLO GREATEST HUNTER " << name << " **********";
+    cout << endl << "************HELLO GREATEST HUNTER " << name << " **********";
     cout << endl << "DO YOU HAVE INTENDANT? y - yes n - no" << endl;
     cin >> ans;
     if(ans == 'y' || ans == 'Y'){
@@ -299,4 +304,11 @@ int main(){
     cout << endl << endl;
     cout << "WHAT A LOADOUT!";
     cout << endl << "*********BYE BYE**********";
+    return;
+}
+int main(){
+    srand(time(NULL));
+    HuntRandomizerStart();
+    string x;
+    cin >> x;
 }
