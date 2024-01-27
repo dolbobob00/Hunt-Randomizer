@@ -58,7 +58,7 @@ public:
         "Bomb Lance",
         "Sparks LRR",
         "Sparks LRR Silencer",
-        "Sparks LRR Sniper",
+        "Sparks LRR Sniper","Nitro Express Rifle","Nitro Express Rifle",
         "Martini-Henry IC1",
         "Martini-Henry IC1 Deadeye",
         "Martini-Henry IC1 Marksman",
@@ -176,10 +176,7 @@ public:
         cout << "You must input name and perk info!";
     }
     ~Hunter(){
-        sex();
-    }
-    void sex(){
-        cout << "sex";
+        cout << "Destructed";
     }
     int GetLoadout(){
         if(hunter > 0){
@@ -197,22 +194,26 @@ public:
                 return 0;
             }
         }
+        cout <<"***************Weapon's************" << endl;
         cout << "Weapon 1 = " << RandomizeLoadout() << endl;
         cout << "Weapon 2 = " << RandomizeLoadout() << endl;
         consTools();
         return 1;
     }
-private:
+protected:
     bool isHaveIntendant = false;
     int hunter = 0;
     int boxes = 5;
     int max = 3;
     int maxWeaponCarryable = 2;
+private:
     void consTools(){
-        cout <<endl<< "Tools 1 = " << meleeTools[rand() % meleeTools.size()] << endl;
+        cout << "***************Tools**************" << endl;
+        cout << "Tools 1 = " << meleeTools[rand() % meleeTools.size()] << endl;
         cout << "Tools 2 = " << "First aid Kit" << endl;
         cout << "Tools 3 = " << randomTools[rand() % randomTools2.size()]<< endl;
         cout << "Tools 4 = " << randomTools2[rand() % randomTools2.size()]<< endl;
+        cout << "***************Consumables**************" << endl;
         cout << "Consumable 1 = " << consumables[rand() % consumables.size()] << endl;
         cout << "Consumable 2 = " << consumables[rand() % consumables.size()] << endl;
         cout << "Consumable 3 = " << consumables[rand() % consumables.size()] << endl;
@@ -301,7 +302,7 @@ void HuntRandomizerStart(){
     }
     Hunter hunt(name,intendant);
     hunt.GetLoadout();
-    cout << endl << endl;
+    cout << endl <<endl;
     cout << "WHAT A LOADOUT!";
     cout << endl << "*********BYE BYE**********";
     return;
