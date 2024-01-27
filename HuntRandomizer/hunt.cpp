@@ -3,8 +3,111 @@
 #include <time.h>
 #include <vector>
 using namespace std;
-class WeaponsAndToolsAndCons{
+class VectorsHuntInfo{
 public:
+    vector <string> hunters = {
+        "Bad Hand",
+        "Biatata",
+        "Billy Story",
+        "Burnt Marshall",
+        "Butcher's Cleaver",
+        "Cain",
+        "Captain Laffite",
+        "Carcass Gunrunner",
+        "Cardinal Rain",
+        "Carter",
+        "Coal Bearer",
+        "Daughter of Decay",
+        "Dead Blessing",
+        "Deckhand",
+        "Devil's Advocate",
+        "Dire Wolf",
+        "False Saint",
+        "Felis",
+        "Gar",
+        "Hawkshaw Jack",
+        "Hail Mary",
+        "Hayalî",
+        "Henry Monroe",
+        "Iron Bark",
+        "Kill Buyer",
+        "Llorona's Heir",
+        "Luna Wolf",
+        "Lonely Howl",
+        "Lulu",
+        "Luz Mala",
+        "Mama Maye",
+        "Marshall Brewer",
+        "North Star",
+        "Ochenkov's Widow",
+        "Perchta Dawn",
+        "Perchta Dusk",
+        "Private Eye",
+        "Redneck",
+        "Redshirt",
+        "Scaramuccia",
+        "Scourge: Midian",
+        "Scourge: Morrigan",
+        "Sgt. Bridgewater",
+        "Sheriff Wayne Hardin",
+        "Sofia",
+        "Steel Eyed",
+        "Teche Wraith",
+        "The Archaeologist",
+        "The Beast Hunter",
+        "The Beekeeper",
+        "The Black Coat",
+        "The Bone Manson",
+        "The Bone Doctor",
+        "The Concubine",
+        "The Drowned Kid",
+        "The Drowned Rat",
+        "The Exile",
+        "The Fang Shearer",
+        "The Gunslinger",
+        "The Headsman",
+        "The Hornback",
+        "The Infected",
+        "The Kid",
+        "The Miko",
+        "The Moorhound",
+        "The Mountain Man",
+        "The Night Acolyte",
+        "The Night Seer",
+        "The Penitent",
+        "The Phantom",
+        "The Plague Doctor",
+        "The Prescient",
+        "The Prodigal Daughter",
+        "The Rat",
+        "The Reaper",
+        "The Reptilian",
+        "The Researcher",
+        "The Revenant",
+        "The Reverend",
+        "The Ronin",
+        "The Scaled Ward",
+        "The Scarecrow",
+        "The Skinflint",
+        "The Skinned",
+        "The Sovereign",
+        "The Spirited",
+        "The Third Son",
+        "The Turncoat",
+        "The Viper: Onset",
+        "The Viper: Rise",
+        "The Viper: Surge",
+        "The Viper: Frenzy",
+        "The Waldmann",
+        "The Wayfarer",
+        "The Witch Hunter",
+        "Thirteenth Mate",
+        "Umpire's Bane",
+        "Wayward Helmsman",
+        "Weird Sister",
+        "Worm Bite",
+        "Zhong Kui"
+    };
     vector <string> meleeTools = {
         "Throwing Axes","Throwing Knives","Dusters","Heavy Knife","Knife","Knuckle Knife"
         };
@@ -166,7 +269,7 @@ public:
         "Katana"
     };
 };
-class Hunter : WeaponsAndToolsAndCons{
+class Hunter : VectorsHuntInfo{
 public:
     Hunter(string Name,bool hasIntendant){
         hunter = SpecNames(Name);
@@ -176,11 +279,14 @@ public:
         cout << "You must input name and perk info!";
     }
     ~Hunter(){
-        cout << "Destructed";
+        cout << endl <<endl;
+        cout << "WHAT A LOADOUT!";
+        cout << endl << "*********BYE BYE**********";
     }
     int GetLoadout(){
         if(hunter > 0){
-            cout << "/n" <<"Would You Get Your standart LoadOut? Y - yes, N - no.";
+            cout << "??? "<<"Would You Get Your standart LoadOut? Y - yes, N - no" << " ???" << endl;
+            cout << "Answer: ";
             char acc;
             cin >> acc;
             if(acc == 'y' || acc == 'Y'){
@@ -208,7 +314,7 @@ protected:
     int maxWeaponCarryable = 2;
 private:
     void consTools(){
-        cout << "***************Tools**************" << endl;
+        cout << endl << "***************Tools**************" << endl;
         cout << "Tools 1 = " << meleeTools[rand() % meleeTools.size()] << endl;
         cout << "Tools 2 = " << "First aid Kit" << endl;
         cout << "Tools 3 = " << randomTools[rand() % randomTools2.size()]<< endl;
@@ -218,6 +324,8 @@ private:
         cout << "Consumable 2 = " << consumables[rand() % consumables.size()] << endl;
         cout << "Consumable 3 = " << consumables[rand() % consumables.size()] << endl;
         cout << "Consumable 4 = " << consumables[rand() % consumables.size()];
+        cout << endl << "Hunter with this loadout must be '" << GetRandomHunter() << "'";
+        cout << endl << "Or '" << GetRandomHunter()<<"' " << " and third or '" << GetRandomHunter()<<"'";
     }
     void BasedLoadouts11(){
          int temp = rand() % 3;
@@ -276,6 +384,9 @@ private:
         }
         return small[rand()% small.size()];
     }
+    string GetRandomHunter(){
+        return hunters[rand() % hunters.size()];
+    }
     int SpecNames(string name){
         if(name == "dolbobob"){
             return 1;
@@ -294,17 +405,15 @@ void HuntRandomizerStart(){
     cin >> name;
     bool intendant = false;
     char ans;
-    cout << endl << "************HELLO GREATEST HUNTER " << name << " **********";
-    cout << endl << "DO YOU HAVE INTENDANT? y - yes n - no" << endl;
+    cout << "************HELLO GREATEST HUNTER " << name << " **********";
+    cout << endl << "DO YOU HAVE INTENDANT? 'Y' - yes 'N' - no" << endl;
+    cout << "Answer: ";
     cin >> ans;
     if(ans == 'y' || ans == 'Y'){
         intendant = true;
     }
     Hunter hunt(name,intendant);
     hunt.GetLoadout();
-    cout << endl <<endl;
-    cout << "WHAT A LOADOUT!";
-    cout << endl << "*********BYE BYE**********";
     return;
 }
 int main(){
