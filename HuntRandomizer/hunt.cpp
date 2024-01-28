@@ -300,7 +300,7 @@ public:
                 return 0;
             }
         }
-        cout <<"***************Weapon's************" << endl;
+        cout<<endl <<"***************Weapon's************" << endl;
         cout << "Weapon 1 = " << RandomizeLoadout() << endl;
         cout << "Weapon 2 = " << RandomizeLoadout() << endl;
         consTools();
@@ -324,8 +324,9 @@ private:
         cout << "Consumable 2 = " << consumables[rand() % consumables.size()] << endl;
         cout << "Consumable 3 = " << consumables[rand() % consumables.size()] << endl;
         cout << "Consumable 4 = " << consumables[rand() % consumables.size()];
-        cout << endl << "Hunter with this loadout must be '" << GetRandomHunter() << "'";
-        cout << endl << "Or '" << GetRandomHunter()<<"' " << " and third or '" << GetRandomHunter()<<"'";
+        cout << "****************Hunter's*****************"<<endl;
+        cout << endl << "Hunter first - '" << GetRandomHunter() << "'";
+        cout << endl << "Hunter second - '" << GetRandomHunter()<<"' " << endl << "Hunter third - '" << GetRandomHunter()<<"'" <<endl;
     }
     void BasedLoadouts11(){
          int temp = rand() % 3;
@@ -412,8 +413,18 @@ void HuntRandomizerStart(){
     if(ans == 'y' || ans == 'Y'){
         intendant = true;
     }
-    Hunter hunt(name,intendant);
-    hunt.GetLoadout();
+    link:
+    Hunter *hunt = new Hunter(name,intendant);
+    hunt->GetLoadout();
+    char ansagain;
+    cout <<endl<< "Want another loadout? Y- yes N-no"<< endl <<"Answer: ";
+    cin >> ansagain;
+    if(ansagain == 'Y' || ansagain == 'y'){
+        delete hunt;
+        goto link;
+    }
+    delete hunt;
+    hunt = nullptr;
     return;
 }
 int main(){

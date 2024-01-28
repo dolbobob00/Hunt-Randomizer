@@ -2,6 +2,13 @@
 #include <string>
 #include <time.h>
 using namespace std;
+class GameMechanics{
+public:
+    void ShotSelf(){
+        
+    }
+private:
+};
 class Player{
 private:
     string name;
@@ -10,7 +17,7 @@ private:
     void Info(){
         cout << "Current game - "<<currentRound+1;
         cout << "Your Health - " << health[currentRound];
-    }
+        }
 
     Player(){
         name = SetName();
